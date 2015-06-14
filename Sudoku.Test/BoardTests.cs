@@ -45,5 +45,18 @@ namespace Sudoku.Test {
                 }
             }
         }
+
+        [TestCase(0, 0, 0, '5', true)]
+        [TestCase(0, 2, 0, '1', true)]
+        [TestCase(0, 2, 0, '3', false)]
+        [TestCase(4, 0, 0, '6', false)]
+        [TestCase(4, 1, 1, '6', false)]
+        [TestCase(4, 1, 2, '6', false)]
+        public void Ist_gültig(int boardNumber, int row, int column, char value, bool expected) {
+            var board = new Board();
+            board.Set(boardNumber, row, column, value);
+
+            Assert.AreEqual(expected, board.CheckValid());
+        }
     }
 }
